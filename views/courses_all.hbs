@@ -53,8 +53,9 @@
                 <div class="row no-gutters align-items-center">
                     <div class="card-mentor col-12 col-sm-8 col-md-12">
                         <div class="card-mentor-image">
-                            {{#each course.instructors as |instructor|}}
-                            <img class="card-mentors" src="{{instructor.photo}}">{{/each}}
+                            {{#each course.instructors as |instructor index|}} {{#ifCond index '<' 2}} <img class="card-mentors"
+                                src="{{instructor.photo}}">
+                                {{/ifCond}} {{/each}}
                         </div>
                         <div class="card-mentor-text">
                             <span>Instructors</span>
@@ -76,16 +77,15 @@
                             <div class="card-batch-details">
                                 Starting from
                                 <br>
-                                <span class="price">{{formatEpochDate run.start}}
+                                <span class="price">{{formatEpochDate course.runs.0.start}}
                                 </span>
                             </div>
                         </div>
                     </div>
-
                     <div class="button-parent col-md-6 col-sm-3 col-6 order-sm-3 order-md-1">
                         <div class="button-solid">
                             <a href="courses/{{id}}">
-                                <button>Rs. {{run.price}}</button>
+                                <button>Rs. {{course.runs.0.price}}</button>
                             </a>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
 
                     <div class="footer col-md-12 col-sm-5 col-12 order-sm-1 order-md-3">
                         <div class="red">Hurry Up!</div>
-                        Enrollment ends {{formatEpochDate run.end}}
+                        Enrollment ends {{formatEpochDate course.runs.0.end}}
                     </div>
                 </div>
 
