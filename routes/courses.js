@@ -34,4 +34,21 @@ route.get('/:id', async (req, res, next) => {
 
 })
 
+route.get('/', async (req, res, next) => {
+    let dataFetch = {}
+    try {
+        let courses = await getAPIdata(config.API.COURSE_URL_WITH_INST_RUNS)
+        dataFetch.courses = deserializer(courses)
+        const html = await cookHTML('courses_all', {
+            baseUrlApi: config.API.BASE_URL,
+            courses: dataFetch.courses,
+            epoch: Math.round((new Date()).getTime() / 1000)
+        })
+        res.send(html)
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+})
+
 module.exports = route
