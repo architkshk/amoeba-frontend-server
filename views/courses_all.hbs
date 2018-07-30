@@ -1,17 +1,26 @@
-<ul class="nav-list">
-    <li class="nav-items pointer">
-        <a href="/">Home</a>
-    </li>
-    <li class="nav-items pointer">
-        <a href="/courses" class="active">All Courses</a>
-    </li>
-</ul>
- <div class="home-vh">
-    <div class="home-container">
-        <h1 class="home-heading">Coding Blocks Online</h1>
-        <h2>Learn to code interactively</h2>
-    </div>
-</div>
+<header>
+    <nav class="main-nav">
+        <div class="nav-left">
+            <span class="logo-parent">
+                <a href="/">
+                    <img src="/images/online-logo.png" alt="online-logo" class="nav-logo pointer">
+                </a>
+            </span>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-list">
+                <li class="nav-items pointer">
+                    <a href="/">Home</a>
+                </li>
+                <li class="nav-items pointer">
+                    <a href="/courses">All Courses</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
 
 <div class="grid-background">
     <div class="heading">
@@ -34,7 +43,7 @@
                     </div>
 
                     <h1 class="card-heading o-text-card">
-                        <a href="courses/{{course.identifier}}">{{course.title}}</a>
+                        <a href="/courses/{{course.id}}">{{course.title}}</a>
                     </h1>
                     <h2 class="card-text">
                         {{course.subtitle}}
@@ -51,10 +60,10 @@
                             <span>Instructors</span>
                             <div class="card-mentor-name">
                                 {{#each instructors as |instructor|}}
-                                    <h2>{{instructor.name}}</h2>
-                                    <p class="card-text card-body">
-                                        {{{mdToHtml instructor.description}}}
-                                    </p>
+                                <h2>{{instructor.name}}</h2>
+                                <p class="card-text card-body">
+                                    {{{mdToHtml instructor.description}}}
+                                </p>
                                 {{/each}}
                             </div>
                         </div>
